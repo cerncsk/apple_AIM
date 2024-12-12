@@ -123,7 +123,7 @@ def _aim(
     num_heads: int,
     num_channels: int = 3,
     probe_layers: Union[int, Tuple[int, ...]] = 6,
-    num_classes: int = 1000,
+    num_classes: int = 2,
     **kwargs: Any,
 ) -> Tuple[nn.Module, nn.Module, nn.Module]:
     # common
