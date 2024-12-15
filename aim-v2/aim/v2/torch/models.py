@@ -42,7 +42,7 @@ class AIMv2VisionEncoder(mixins.AIMv2VisionMixin, nn.Module):
         head_average_pool: bool = True,
         head_linear_bias: bool = False,
         pos_embed_type: Literal["sincos", "absolute"] = "absolute",
-        head_type: Optional[Literal["attention-pool"]] = None,
+        head_type: Optional[Literal["attention-pool"]] = "attention-pool",
         **kwargs: Any,
     ):
         super().__init__()
