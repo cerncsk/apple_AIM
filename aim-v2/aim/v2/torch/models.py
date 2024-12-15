@@ -32,7 +32,7 @@ class AIMv2VisionEncoder(mixins.AIMv2VisionMixin, nn.Module):
         self,
         img_size: Union[int, Tuple[int, int]] = 224,
         patch_size: Union[int, Tuple[int, int]] = 14,
-        embed_dim: int = 1024,
+        embed_dim: int = 2,  #1024, change to 2 by cc
         mlp_hidden_dim: int = 2816,
         num_blocks: int = 24,
         num_heads: int = 8,
@@ -71,10 +71,10 @@ class AIMv2VisionEncoder(mixins.AIMv2VisionMixin, nn.Module):
             norm_layer=norm_layer,
             **kwargs,
         )
-        if head_type == "attention-pool":
-            self.head = layers.AttentionPoolingClassifier(
+        head_type == "attention-pool":
+        self.head = layers.AttentionPoolingClassifier(
                 embed_dim,
-                out_features=embed_dim,
+                out_features=embed_dim,  #number of class
                 num_heads=head_num_heads,
                 num_queries=head_num_queries,
                 use_batch_norm=False,
@@ -82,10 +82,7 @@ class AIMv2VisionEncoder(mixins.AIMv2VisionMixin, nn.Module):
                 linear_bias=head_linear_bias,
                 average_pool=head_average_pool,
             )
-        else:
-            self.head = nn.Identity()
-
-
+        
 class AIMv2TextEncoder(mixins.AIMv2TextMixin, nn.Module):
     def __init__(
         self,
