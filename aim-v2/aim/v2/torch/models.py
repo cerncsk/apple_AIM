@@ -71,7 +71,7 @@ class AIMv2VisionEncoder(mixins.AIMv2VisionMixin, nn.Module):
             norm_layer=norm_layer,
             **kwargs,
         )
-        head_type == "attention-pool":
+        head_type = "attention-pool"
         self.head = layers.AttentionPoolingClassifier(
                 embed_dim,
                 out_features=embed_dim,  #number of class
